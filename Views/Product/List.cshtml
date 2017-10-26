@@ -1,0 +1,30 @@
+﻿@model SportsStore.WebUI.Models.ProductsListViewModel
+@{
+    ViewBag.Title = "Products";
+
+}
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("ProductSummary", p)
+
+    
+    @*<div class="well">
+        
+        <h3>
+            <strong>@p.Name</strong>
+            <span class="btn btn-group label-primary pull-right ">
+                @p.Price.ToString("c")
+            </span>
+            
+        </h3>
+      
+        <span class="lead"> @p.Description</span>
+    </div>*@
+   
+}
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new
+{
+    page = x
+}))
+</div>
